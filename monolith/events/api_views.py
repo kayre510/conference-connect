@@ -9,7 +9,10 @@ from .models import Conference, Location, State
 
 class LocationListEncoder(ModelEncoder):
     model = Location
-    properties = ["name"]
+    properties = [
+        "name",
+        "picture_url",
+    ]
 
 
 class LocationDetailEncoder(ModelEncoder):
@@ -32,6 +35,7 @@ class ConferenceListEncoder(ModelEncoder):
     properties = ["name"]
 
 
+
 class ConferenceDetailEncoder(ModelEncoder):
     model = Conference
     properties = [
@@ -46,7 +50,7 @@ class ConferenceDetailEncoder(ModelEncoder):
         "location",
     ]
     encoders = {
-        "location": LocationListEncoder(),
+        "location": LocationDetailEncoder(),
     }
 
 
