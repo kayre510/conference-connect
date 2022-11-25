@@ -14,6 +14,7 @@ class LocationListEncoder(ModelEncoder):
     properties = [
         "name",
         "picture_url",
+        'id'
     ]
 
 
@@ -52,7 +53,7 @@ class ConferenceDetailEncoder(ModelEncoder):
         "location",
     ]
     encoders = {
-        "location": LocationDetailEncoder(),
+        "location": LocationListEncoder(),
     }
 
 
