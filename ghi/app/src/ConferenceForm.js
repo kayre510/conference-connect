@@ -8,8 +8,8 @@ class ConferenceForm extends React.Component {
             starts: '',
             ends: '',
             description: '',
-            maximumPresentations: '',
-            maximumAttendees: '',
+            max_presentations: '',
+            max_attendees: '',
             location: '',
             locations: [],
         };
@@ -45,12 +45,12 @@ class ConferenceForm extends React.Component {
 
     handleMaximumPresentationsChange(event) {
         const value = event.target.value;
-        this.setState({maximumPresentations: value})
+        this.setState({max_presentations: value})
     }
 
     handleMaximumAttendeesChange(event) {
         const value = event.target.value;
-        this.setState({maximumAttendees: value})
+        this.setState({max_attendees: value})
     }
 
     handleLocationChange(event) {
@@ -61,14 +61,11 @@ class ConferenceForm extends React.Component {
     async handleSubmit(event) {
         event.preventDefault();
         const data = {...this.state};
-        data.max_presentations = data.maximumPresentations;
-        data.max_attendees = data.maximumAttendees;
-        data.location = data.locations;
-        delete data.maximumPresentations;
-        delete data.maximumAttendees;
         delete data.locations;
+        console.log("hello")
 
         const conferenceUrl = 'http://localhost:8000/api/conferences/';
+        console.log(data)
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),
@@ -76,17 +73,21 @@ class ConferenceForm extends React.Component {
                 'Content-Type': 'applications/json',
             },
         };
+        console.log(data)
+        console.log(fetchConfig)
+        console.log(conferenceUrl)
         const response = await fetch(conferenceUrl, fetchConfig);
+        console.log(response)
         if (response.ok) {
             const newConference = await response.json();
-
+            console.log(newConference)
             const cleared = {
                 name: '',
                 starts: '',
                 ends: '',
                 description: '',
-                maximumPresentations: '',
-                maximumAttendees: '',
+                max_presentations: '',
+                max_attendees: '',
                 location: '',
             };
             this.setState(cleared);
@@ -132,12 +133,12 @@ class ConferenceForm extends React.Component {
                                     <textarea onChange={this.handleDescriptionChange} value={this.state.description} required className="form-control" id="description" rows="3"></textarea>
                                 </div>
                                 <div className="form-floating mb-3">
-                                    <input onChange={this.handleMaximumPresentationsChange} value={this.state.maximumPresentations} placeholder="Maximum presentations" required type="number"
+                                    <input onChange={this.handleMaximumPresentationsChange} value={this.state.max_presentations} placeholder="Maximum presentations" required type="number"
                                         name="max_presentations" id="max_presentations" className="form-control"/>
                                     <label htmlFor="max_presentations">Maximum Presentations</label>
                                 </div>
                                 <div className="form-floating mb-3">
-                                    <input onChange={this.handleMaximumAttendeesChange} value={this.state.maximumAttendees} placeholder="Maximum attendees" required type="number" name="max_attendees"
+                                    <input onChange={this.handleMaximumAttendeesChange} value={this.state.max_attendees} placeholder="Maximum attendees" required type="number" name="max_attendees"
                                         id="max_attendees" className="form-control"/>
                                     <label htmlFor="max_attendees">Maximum Attendees</label>
                                 </div>

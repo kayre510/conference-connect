@@ -3,26 +3,11 @@ import AttendeesList from './AttendeesList';
 import LocationForm from './LocationForm';
 import ConferenceForm from './ConferenceForm';
 import AttendConferenceForm  from './AttendConferenceForm';
+import PresentationForm from './PresentationForm';
+import { BrowserRouter, Routes, Route} from "react-router-dom";
+import MainPage from './MainPage';
 
-// function App(props) {
-//   if (props.attendees === undefined) {
-//     return null;
-//   }
-//   return (
-//     <>
-//       <Nav />
-//       <div className="container">
-//         {/* <AttendConferenceForm/> */}
-//         {/* <ConferenceForm /> */}
-//         {<LocationForm />}
 
-//         {/* <AttendeesList attendees={props.attendees} /> */}
-//       </div>
-//     </>
-//   );
-// }
-
-// export default App;
 
 function App(props) {
   if (props.attendees === undefined) {
@@ -33,13 +18,51 @@ function App(props) {
       <Nav />
       <div className="container">
           <Routes>
+            <Route index element={<MainPage />} />
             <Route path="conferences/new" element={<ConferenceForm />} />
             <Route path="attendees/new" element={<AttendConferenceForm />} />
             <Route path="locations/new" element={<LocationForm />} />
             <Route path="attendees" element={<AttendeesList attendees={props.attendees} />} />
+            <Route path="presentations/new" element={<PresentationForm />} />
           </Routes>
       </div>
     </BrowserRouter>
   );
 }
 export default App
+
+
+// import Nav from './Nav';
+// import React from 'react';
+// // import AttendeesList from './AttendeesList';
+// import LocationForm from './LocationForm';
+// import ConferenceForm from './ConferenceForm';
+// import AttendConferenceForm from './AttendConferenceForm';
+// import AttendeesList from './AttendeesList';
+// import PresentationForm from './PresentationForm';
+// import { Routes, Route , BrowserRouter } from 'react-router-dom'
+// // import MainPage from './MainPage';
+
+
+// function App(props) {
+//   if (props.attendees === undefined) {
+//     return null
+//   }
+//   return (
+//     <BrowserRouter>
+//     <Nav />
+//     {/* <div className= "container"> */}
+//       <Routes>
+//         {/* <Route index element={<MainPage />} /> */}
+//         <Route path="locations/new" element={<LocationForm />} />
+//         <Route path="conferences/new" element={<ConferenceForm />} />
+//         <Route path="attendees/new" element={<AttendConferenceForm/>}/>
+//         <Route path="attendees" element={<AttendeesList attendees={props.attendees}/>} />
+//         <Route path="presentations/new" element={<PresentationForm />}/>
+//     </Routes>
+//     {/* </div> */}
+//     </BrowserRouter>
+//   );
+// }
+
+// export default App;

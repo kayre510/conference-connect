@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -18,23 +19,22 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Home</a>
+              <a class="nav-link" aria-current="page" href="/">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link d-none" aria-current="page" href="new-location.html">New location</a>
             </li>
             <li class="nav-item">
               <a class="nav-link d-none" aria-current="page" href="new-conference.html">New conference</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link d-none" aria-current="page" href="new-presentation.html">New presentation</a>
-          </li>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="new-presentation.html">New presentation</a>
+            </li>
           </ul>
           <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search conferences" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
-            <button class="btn btn-primary" href="attend-conference.html">Attend!</button>
-
+            <a class="btn btn-primary" href="attend-conference.html">Attend!</a>
           </form>
         </div>
       </div>
@@ -46,25 +46,29 @@
         <div class="offset-3 col-6">
           <div class="shadow p-4 mt-4">
             <h1>Create a new presentation</h1>
-            <form id="create-conference-form">
+            <form id="create-presentation-form">
               <div class="form-floating mb-3">
-                <input placeholder="presenter_name" name="presenter_name" required type="text" id="presenter_name" class="form-control">
-                <label for="name">Presenter Name</label>
+                <input placeholder="Presenter name" required type="text" name="presenter_name" id="presenter_name" class="form-control">
+                <label for="presenter_name">Presenter name</label>
               </div>
               <div class="form-floating mb-3">
-                <input placeholder="presenter_email" name="presenter_email"required type="text" id="presenter_email" class="form-control">
-                <label for="presenter_email">Presenter Email</label>
+                <input placeholder="Presenter email" required type="email" name="presenter_email" id="presenter_email" class="form-control">
+                <label for="presenter_email">Presenter email</label>
               </div>
               <div class="form-floating mb-3">
-                <input placeholder="company_name" name="company_name"id="company_name" class="form-control">
-                <label for="company_name">Company Name</label>
+                <input placeholder="Company name" type="text" name="company_name" id="company_name" class="form-control">
+                <label for="company_name">Company name</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input placeholder="Title" required type="text" name="title" id="title" class="form-control">
+                <label for="title">Title</label>
               </div>
               <div class="mb-3">
-                <label for="synopsis" class="form-label">Synopsis</label>
-                <textarea class="form-control" id="synopsis" rows="3"></textarea>
+                <label for="synopsis">Synopsis</label>
+                <textarea class="form-control" id="synopsis" rows="3" name="synopsis" class="form-control"></textarea>
               </div>
               <div class="mb-3">
-                <select required id="conference" name='conference'class="form-select">
+                <select required name="conference" id="conference" class="form-select">
                   <option selected value="">Choose a conference</option>
                 </select>
               </div>
